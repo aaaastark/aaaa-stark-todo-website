@@ -15,9 +15,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 import django_heroku
 import django
-os.environ['DJANGO_SETTINGS_MODULE'] = 'todo_website.settings'
-from django.core.wsgi import get_wsgi_application 
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
