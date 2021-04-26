@@ -13,6 +13,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path, os
 from django.conf import settings
 from django.conf.urls.static import static
+import django_heroku
+import django
+os.environ['DJANGO_SETTINGS_MODULE'] = 'todo_website.settings'
+from django.core.wsgi import get_wsgi_application 
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -122,17 +127,38 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
-
+# define your base directory
+# It will be `absolute/path/to/demo3`
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,"static"),
-    # 'var/www/static',                             # Use path access static folders
-]
-
+# define where your static files will be collected
+# It will be `absolute/path/to/demo3/static`
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR,"static/images")
+# keep it empty for the moment
+STATICFILES_DIRS = (
+)
+
+
+
+
+# STATIC_ROOT = os.path.join(BASE_DIR,"static")
+
+# STATIC_URL = '/static/'
+# MEDIA_URL = '/images/'
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR,"static"),
+#     # 'var/www/static',                             # Use path access static folders
+# ]
+
+# MEDIA_ROOT = os.path.join(BASE_DIR,"static/images")
+
+
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
